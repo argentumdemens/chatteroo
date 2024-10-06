@@ -1,0 +1,12 @@
+node_modules
+npm-debug.log
+.DS_Store
+.git
+
+# terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+*.tfvars
+
+.vscode/

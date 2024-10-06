@@ -54,9 +54,12 @@ jobs:
           GOOGLE_APPLICATION_CREDENTIALS: $HOME/gcp-key.json
         run: |
           cd terraform
+          ls -l $HOME # Ensure the key is present
           terraform init
 
       - name: Apply Terraform
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: $HOME/gcp-key.json
         run: |
           cd terraform
           terraform apply -auto-approve \

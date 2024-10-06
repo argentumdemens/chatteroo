@@ -50,6 +50,8 @@ jobs:
           gcloud config set run/region northamerica-northeast1
     
       - name: Initialize Terraform
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: $HOME/gcp-key.json
         run: |
           cd terraform
           terraform init

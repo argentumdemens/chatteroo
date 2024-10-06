@@ -48,6 +48,10 @@ jobs:
           gcloud auth activate-service-account --key-file $HOME/gcp-key.json
           gcloud config set project ${{ secrets.GCP_PROJECT_ID }}
           gcloud config set run/region northamerica-northeast1
+
+      - name: Debug Key File
+        run: |
+          head -n 10 $HOME/gcp-key.json  # Print the first 10 lines (for debugging)
     
       - name: Initialize Terraform
         env:

@@ -25,6 +25,10 @@ resource "google_storage_bucket" "terraform_state_bucket" {
   location      = var.region
   force_destroy = true
   storage_class = "STANDARD"
+
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 resource "google_cloud_run_service" "chatteroo" {

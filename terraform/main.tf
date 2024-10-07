@@ -20,7 +20,12 @@ terraform {
   }
 }
 
+data "google_storage_bucket" "existing" {
+  name = "chatteroo-terraform-state"
+}
+
 resource "google_storage_bucket" "terraform_state_bucket" {
+  count         = length(data.google_storage_bucket.existing.*.name) == 0 ? 1 : 0
   name          = "chatteroo-terraform-state"
   location      = var.region
   force_destroy = true

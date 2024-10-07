@@ -46,3 +46,10 @@ resource "google_cloud_run_service" "chatteroo" {
     latest_revision = true
   }
 }
+
+resource "google_cloud_run_service_iam_member" "allUsers" {
+  service    = google_cloud_run_service.chatteroo.name
+  location   = google_cloud_run_service.chatteroo.location
+  role       = "roles/run.invoker"
+  member     = "allUsers"
+}
